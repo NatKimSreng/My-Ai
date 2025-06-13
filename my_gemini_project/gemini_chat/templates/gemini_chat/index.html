@@ -6,36 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kim AI</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div id="particles" class="particles"></div>
     <div class="chat-container">
         <header>
             <h1><i class="fas fa-robot"></i> Kim AI</h1>
-            <p class="subtitle">Your intelligent assistant for smart answers.</p>
+            <div class="subtitle">Advanced Neural Intelligence • Powered by Future Tech</div>
         </header>
-        <div class="chat-area" id="response-area">
-            {% for entry in chat_history %}
-                <div class="message user-message">
-                    <div class="message-content">
-                        <i class="fas fa-user"></i> <strong>You:</strong> {{ entry.prompt }}
-                        <span class="timestamp">{{ entry.timestamp|date:"H:i" }}</span>
-                    </div>
-                </div>
-                <div class="message ai-message">
-                    <div class="message-content">
-                        <i class="fas fa-robot"></i> <strong>Kim AI:</strong> {{ entry.response }}
-                        <span class="timestamp">{{ entry.timestamp|date:"H:i" }}</span>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        <div class="chat-area" id="response-area"></div>
         <div class="input-section">
-            <textarea id="promptInput" placeholder="Type your message..."></textarea>
+            <textarea id="promptInput" placeholder="Type your message here..." rows="1"></textarea>
             <button class="btn" id="submitBtn"><i class="fas fa-paper-plane"></i> Send</button>
+            <button class="btn clear-btn" id="clearHistoryBtn"><i class="fas fa-trash"></i> Clear History</button>
         </div>
         <div class="loading" id="loadingMessage" style="display: none;">
-            <div class="spinner"></div> Generating response...
+            <div class="spinner"></div> Processing your request...
         </div>
     </div>
     <script src="{% static 'script.js' %}"></script>
